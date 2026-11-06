@@ -1,0 +1,42 @@
+name: .NET
+
+on:
+  pull_request:
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "RenoHome.sln"
+      - "global.json"
+      - ".github/workflows/dotnet.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "RenoHome.sln"
+      - "global.json"
+      - ".github/workflows/dotnet.yml"
+
+jobs:
+  verify:
+    name: Build and test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        run: dotnet restore RenoHome.sln
+
+      - name: Build
+        run: dotnet build RenoHome.sln --no-restore --configuration Release
+
+      - name: Test
+        run: dotnet test RenoHome.sln --no-build --configuration Release --verbosity normal
