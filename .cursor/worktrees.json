@@ -1,0 +1,10 @@
+{
+  "setup-worktree-unix": [
+    "if [ -f \"$ROOT_WORKTREE_PATH/.env\" ]; then cp \"$ROOT_WORKTREE_PATH/.env\" .env; fi",
+    "dotnet restore RenoHome.sln"
+  ],
+  "setup-worktree-windows": [
+    "if exist \"%ROOT_WORKTREE_PATH%\\.env\" copy /Y \"%ROOT_WORKTREE_PATH%\\.env\" .env",
+    "dotnet restore RenoHome.sln"
+  ]
+}
