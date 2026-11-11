@@ -1,9 +1,9 @@
 # Worktrunk project hooks (https://worktrunk.dev)
-# Keep in sync with .cursor/worktrees.json for Cursor Agent worktrees.
+# Shared file list: .worktreeinclude (also used by .cursor/setup-worktree-*.{sh,ps1})
 
 [pre-start]
-# Share gitignored local files (see .worktreeinclude) into the new worktree
-env = "wt step copy-ignored"
+# Share gitignored local files listed in .worktreeinclude into the new worktree
+env = "wt step copy-ignored --require-include"
 # Restore NuGet packages so build/test work immediately
 restore = "dotnet restore RenoHome.sln"
 
