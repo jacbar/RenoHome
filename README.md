@@ -1,6 +1,6 @@
 # RenoHome
 
-.NET 10 Blazor learning project, intended for hosting on **Azure App Service (Linux)**.
+.NET 11 Blazor learning project, intended for hosting on **Azure App Service (Linux)**.
 
 This repository is a clean scaffold: one Blazor Web App with Interactive Server rendering, a `/health` endpoint, and smoke tests.
 
@@ -8,14 +8,14 @@ This repository is a clean scaffold: one Blazor Web App with Interactive Server 
 
 | Layer | Choice |
 | --- | --- |
-| Runtime | .NET 10 (LTS) |
+| Runtime | .NET 11 (STS) |
 | UI | Blazor Web App, Interactive Server |
 | Tests | xUnit + `Microsoft.AspNetCore.Mvc.Testing` |
-| Hosting target | Azure App Service Linux (`.NET 10`) |
+| Hosting target | Azure App Service Linux (`.NET 11`) |
 
 ## Prerequisites
 
-- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) (see `global.json`)
+- [.NET 11 SDK](https://dotnet.microsoft.com/download/dotnet/11.0) (see `global.json`)
 
 ## Run locally
 
@@ -42,7 +42,7 @@ dotnet test
 ```
 RenoHome.sln
 src/
-  RenoHome.Web/                 # Blazor Web App (net10.0)
+  RenoHome.Web/                 # Blazor Web App (net11.0)
     Components/                 # Razor components, layout, pages
     wwwroot/                    # Static assets
     Program.cs                  # App startup + /health
@@ -52,7 +52,7 @@ tests/
 
 ## Azure App Service (Linux)
 
-Deploy the publish output of `RenoHome.Web` to an App Service running **.NET 10**.
+Deploy the publish output of `RenoHome.Web` to an App Service running **.NET 11**.
 
 Interactive Server needs **WebSockets** enabled on the web app.
 
@@ -71,7 +71,7 @@ az webapp create \
   --name <unique-app-name> \
   --resource-group rg-renohome \
   --plan plan-renohome \
-  --runtime "DOTNETCORE:10.0"
+  --runtime "DOTNETCORE:11.0"
 
 az webapp config set \
   --name <unique-app-name> \
